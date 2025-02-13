@@ -34,10 +34,14 @@ public class PlayerControllerX : MonoBehaviour
     void Update()
     {
         // While space is pressed and player is low enough, float up
-        if (Input.GetKey(KeyCode.Space) && !gameOver)
+        if (Input.GetKey(KeyCode.Space) && !gameOver && transform.position.y < 15)
         {
             playerRb.AddForce(Vector3.up * floatForce);
             playerRb.AddForce(Vector3.up * floatForce * Time.deltaTime);
+        }
+        if (transform.position.y > 15)
+        {
+            playerRb.velocity = Vector3.zero;
         }
     }
 
